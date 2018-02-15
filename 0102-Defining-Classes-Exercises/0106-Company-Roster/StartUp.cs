@@ -44,14 +44,22 @@ class StartUp
             Salary = decimal.Parse(args[1]),
             Position = args[2]
         };
-        if (args.Length == 5)
-        {
-            employee.Email = args[4];
-        }
-        else if (args.Length == 6)
+
+        if (args.Length == 6)
         {
             employee.Email = args[4];
             employee.Age = int.Parse(args[5]);
+        }
+        else if (args.Length == 5)
+        {
+            int age;
+            bool isAge = int.TryParse(args[4], out age);
+            employee.Age = age;
+            if (!isAge)
+            {
+                employee.Email = args[4];
+                employee.Age = -1;
+            }
         }
 
         return employee;
