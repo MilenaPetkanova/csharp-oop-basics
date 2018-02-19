@@ -4,8 +4,6 @@ using System.Linq;
 
 class Startup
 {
-    // 60/100
-
     static void Main()
     {
         var peopleInfo = new List<Person>();
@@ -30,8 +28,30 @@ class Startup
         }
 
         var queryName = Console.ReadLine();
-        var chosenPerson = peopleInfo.First(p => p.Name == queryName);
-        Console.WriteLine(chosenPerson);
+
+        PrintQueryPerson(peopleInfo, queryName);
+    }
+
+    private static void PrintQueryPerson(List<Person> people, string query)
+    {
+        var chosenPerson = people.First(p => p.Name == query);
+        Console.WriteLine(chosenPerson.Name);
+        Console.WriteLine("Company:");
+        if (chosenPerson.TheCompany.Counter == 1)
+        {
+            Console.WriteLine($"{chosenPerson.TheCompany.Name} {chosenPerson.TheCompany.Department} {chosenPerson.TheCompany.Salary:f2}");
+        }
+        Console.WriteLine("Car:");
+        if (chosenPerson.TheCar.Counter == 1)
+        {
+            Console.WriteLine($"{chosenPerson.TheCar.Model} {chosenPerson.TheCar.Speed}");
+        }
+        Console.WriteLine("Pokemon:");
+        chosenPerson.Pokemons.ForEach(p => Console.WriteLine(string.Join(" ", p.Name, p.Type)));
+        Console.WriteLine("Parents:");
+        chosenPerson.Parents.ForEach(p => Console.WriteLine(string.Join(" ", p.Name, p.Birthday)));
+        Console.WriteLine("Children:");
+        chosenPerson.Children.ForEach(c => Console.WriteLine(string.Join(" ", c.Name, c.Birthday)));
     }
 
     private static void GetPersonalInfo(string[] info, Person person)
@@ -41,32 +61,32 @@ class Startup
         switch (infoType)
         {
             case "company":
-                person.TheCompany.CompanyName = info[2];
+                person.TheCompany.Name = info[2];
                 person.TheCompany.Department = info[3];
                 person.TheCompany.Counter = 1;
                 person.TheCompany.Salary = decimal.Parse(info[4]);
                 break;
             case "car":
-                person.TheCar.CarModel = info[2];
-                person.TheCar.CarSpeed = info[3];
+                person.TheCar.Model = info[2];
+                person.TheCar.Speed = info[3];
                 person.TheCar.Counter = 1;
                 break;
             case "pokemon":
                 var pokemon = new Person.Pokemon();
-                pokemon.PokemonName = info[2];
-                pokemon.PokemonType = info[3];
+                pokemon.Name = info[2];
+                pokemon.Type = info[3];
                 person.Pokemons.Add(pokemon);
                 break;
             case "parents":
                 var parent = new Person.Parent();
-                parent.ParentName = info[2];
-                parent.ParentBirthday = info[3];
+                parent.Name = info[2];
+                parent.Birthday = info[3];
                 person.Parents.Add(parent);
                 break;
             case "children":
                 var child = new Person.Child();
-                child.ChildName = info[2];
-                child.ChildBirthday = info[3];
+                child.Name = info[2];
+                child.Birthday = info[3];
                 person.Children.Add(child);
                 break;
             default:
