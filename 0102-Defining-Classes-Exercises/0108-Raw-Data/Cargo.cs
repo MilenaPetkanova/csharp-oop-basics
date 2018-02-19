@@ -14,5 +14,4 @@
         get { return cargoWeight; }
         set { cargoWeight = value; }
     }
-
 }

@@ -29,7 +29,6 @@ class Program
             {
                 trainer.AddPokemon(pokemon);
             }
-
         }
 
         while ((command = Console.ReadLine()) != "End")

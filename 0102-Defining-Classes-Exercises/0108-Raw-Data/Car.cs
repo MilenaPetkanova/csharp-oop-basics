@@ -54,18 +54,15 @@ class Car
         set { cargo = value; }
     }
 
-
     public Engine Engine
     {
         get { return engine; }
         set { engine = value; }
     }
 
-
     public string Model
     {
         get { return model; }
         set { model = value; }
     }
-
 }

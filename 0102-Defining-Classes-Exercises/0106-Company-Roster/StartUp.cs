@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-class StartUp
+class Startup
 {
     static void Main()
     {

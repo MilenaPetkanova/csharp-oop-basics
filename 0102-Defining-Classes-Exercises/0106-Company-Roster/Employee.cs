@@ -36,5 +36,4 @@
         get { return name; }
         set { name = value; }
     }
-
 }

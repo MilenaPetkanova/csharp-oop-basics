@@ -1,6 +1,6 @@
 ﻿using System;
 
-class StartUp
+class Startup
 {
     static void Main()
     {
@@ -18,7 +18,6 @@ class StartUp
         }
 
         var oldestMember = family.GetOldestMember();
-
 
         Console.WriteLine($"{oldestMember.Name} {oldestMember.Age}");
     }
