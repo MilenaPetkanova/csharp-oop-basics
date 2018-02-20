@@ -7,17 +7,12 @@ namespace P06_Sneaking
         static char[][] room;
         static void Main()
         {
-            int n = int.Parse(Console.ReadLine());
-            room = new char[n][];
+            int rows = int.Parse(Console.ReadLine());
+            room = new char[rows][];
 
-            for (int row = 0; row < n; row++)
+            for (int row = 0; row < rows; row++)
             {
-                var input = Console.ReadLine().ToCharArray();
-                room[row] = new char[input.Length];
-                for (int col = 0; col < input.Length; col++)
-                {
-                    room[row][col] = input[col];
-                }
+                room[row] = Console.ReadLine().ToCharArray();
             }
 
             var moves = Console.ReadLine().ToCharArray();

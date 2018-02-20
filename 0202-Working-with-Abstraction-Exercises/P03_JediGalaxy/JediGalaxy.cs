@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace P03_JediGalaxy
 {
-    class Program
+    class JediGalaxycs
     {
         static void Main()
         {
@@ -11,7 +11,6 @@ namespace P03_JediGalaxy
             GetMatrixDimensions(out x, out y);
 
             int[,] matrix = new int[x, y];
-
             ReadMatrix(x, y, matrix);
 
             string command = Console.ReadLine();

@@ -1,46 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 
 public class Person
 {
-    private string name;
-    private string birthday;
-    private List<Person> parents;
-    private List<Person> children;
+    public string Name { get; set; }
+    public string BirthDate { get; set; }
+    public List<Person> Parents { get; set; }
+    public List<Person> Children { get; set; }
 
     public Person()
     {
-        this.Children = new List<Person>();
         this.Parents = new List<Person>();
+        this.Children = new List<Person>();
     }
 
-    public string Name
+    public Person(string name, string birthDate) : this()
     {
-        get { return name; }
-        set { name = value; }
-    }
-
-    public string Birthday
-    {
-        get { return birthday; }
-        set { birthday = value; }
-    }
-
-    public List<Person> Parents
-    {
-        get { return parents; }
-        set { parents = value; }
-    }
-
-    public List<Person> Children
-    {
-        get { return children; }
-        set { children = value; }
+        this.Name = name;
+        this.BirthDate = birthDate;
     }
 
     public override string ToString()
     {
-        return $"{this.Name} {this.Birthday}";
+        var sb = new StringBuilder();
+        sb.AppendLine(this.Name + " " + this.BirthDate);
+        sb.AppendLine("Parents:");
+        foreach (var parent in this.Parents)
+        {
+            sb.AppendLine(parent.Name + " " + parent.BirthDate);
+        }
+        sb.AppendLine("Children:");
+        foreach (var child in this.Children)
+        {
+            sb.AppendLine(child.Name + " " + child.BirthDate);
+        }
+        return sb.ToString();
     }
+
 }
