@@ -1,0 +1,31 @@
+﻿using System.Collections.Generic;
+
+public class Team
+{
+    private string name;
+    private List<Person> firstTeam;
+    private List<Person> reserveTeam;
+
+    public string Name => this.name;
+    public List<Person> FirstTeam => this.firstTeam;
+    public List<Person> ReserveTeam => this.reserveTeam;
+
+    public Team(string name)
+    {
+        this.name = name;
+        this.firstTeam = new List<Person>();
+        this.reserveTeam = new List<Person>();
+    }
+
+    public void AddPlayer(Person person)
+    {
+        if (person.Age < 40)
+        {
+            this.firstTeam.Add(person);
+        }
+        else
+        {
+            this.reserveTeam.Add(person);
+        }
+    }
+}
