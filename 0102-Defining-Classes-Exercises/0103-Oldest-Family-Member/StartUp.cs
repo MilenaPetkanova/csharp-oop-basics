@@ -4,11 +4,11 @@ class Startup
 {
     static void Main()
     {
-        int n = int.Parse(Console.ReadLine());
+        int lines = int.Parse(Console.ReadLine());
 
         var family = new Family();
 
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < lines; i++)
         {
             var line = Console.ReadLine().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
