@@ -7,8 +7,7 @@ class Startup
     {
         try
         {
-            var pizzaArgs = Console.ReadLine().Split();
-            var name = pizzaArgs[1];
+            var name = Console.ReadLine().Split()[1];
 
             Dough dough = ReadDough();
 

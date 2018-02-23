@@ -4,6 +4,8 @@ using System.Linq;
 
 public class Dough 
 {
+    private const int MIN_WEIGHT = 1;
+    private const int MAX_WEIGHT = 20;
     private Dictionary<string, double> validFlourTypes =
         new Dictionary<string, double>
         {
@@ -52,9 +54,9 @@ public class Dough
         get => this.weight;
         set
         {
-            if (value < 1 || value > 200)
+            if (value < MIN_WEIGHT || value > MAX_WEIGHT)
             {
-                throw new ArgumentException("Dough weight should be in the range [1..200].");
+                throw new ArgumentException($"Dough weight should be in the range [{MIN_WEIGHT}..{MAX_WEIGHT}].");
             }
             this.weight = value;
         }

@@ -4,6 +4,9 @@ using System.Linq;
 
 public class Pizza 
 {
+    private const int NAME_MAX_LENGTH = 15;
+    private const int MAX_TOPPINGS_COUNT = 15;
+
     private string name;
     private Dough dough;
     private List<Topping> toppings;
@@ -13,19 +16,15 @@ public class Pizza
         get => this.name;
         private set
         {
-            if (string.IsNullOrEmpty(value) || value.Length > 15)
+            if (string.IsNullOrEmpty(value) || value.Length > NAME_MAX_LENGTH)
             {
-                throw new ArgumentException("Pizza name should be between 1 and 15 symbols.");
+                throw new ArgumentException($"Pizza name should be between 1 and {NAME_MAX_LENGTH} symbols.");
             }
             this.name = value;
         }
     }
 
-    public Dough Dough
-    {
-        get => this.dough;
-        private set { dough = value; }
-    }
+    public Dough Dough { get; private set; }
 
     public int ToppingCount => this.toppings.Count;
 
@@ -39,7 +38,7 @@ public class Pizza
     public void AddTopping(Topping topping)
     {
         this.toppings.Add(topping);
-        if (this.toppings.Count > 10)
+        if (this.toppings.Count > MAX_TOPPINGS_COUNT)
         {
             throw new ArgumentException("Number of toppings should be in range [0..10].");
         }

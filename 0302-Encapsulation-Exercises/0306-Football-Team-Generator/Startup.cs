@@ -6,7 +6,6 @@ class Startup
 {
     static void Main()
     {
-
         var allTeams = new List<Team>();
 
         string inputLine;

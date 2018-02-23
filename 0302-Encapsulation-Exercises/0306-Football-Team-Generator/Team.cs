@@ -50,7 +50,6 @@ public class Team
 
     private int CalculateRating()
     {
-        //return (int)Math.Round(this.players.ForEach(p => p.Stats.Values.Sum()));
         double rating = 0;
         foreach (var player in this.players)
         {

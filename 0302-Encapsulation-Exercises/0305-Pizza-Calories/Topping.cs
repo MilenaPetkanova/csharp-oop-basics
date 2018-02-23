@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class Topping
 {
+    private const int MIN_WEIGHT = 1;
+    private const int MAX_WEIGHT = 50;
     private Dictionary<string, double> validToppings = 
         new Dictionary<string, double>
         {
@@ -33,7 +35,7 @@ public class Topping
         {
             if (value < 1 || value > 50)
             {
-                throw new ArgumentException($"{this.type} weight should be in the range [1..50].");
+                throw new ArgumentException($"{this.type} weight should be in the range [{MIN_WEIGHT}..{MAX_WEIGHT}].");
             }
             this.weight = value;
         }
