@@ -9,10 +9,10 @@ public class Song
     private const string InvalidSongMinutesException = "Song minutes should be between 0 and 14.";
     private const string InvalidSongSecondsException = "Song seconds should be between 0 and 59.";
 
-    public string ArtistName { get; set; }
-    public string SongName { get; set; }
-    public int Minutes { get; set; }
-    public int Seconds { get; set; }
+    public string ArtistName { get; private set; }
+    public string SongName { get; private set; }
+    public int Minutes { get; private set; }
+    public int Seconds { get; private set; }
 
     public Song(string artist, string song, int minutes, int seconds)
     {
