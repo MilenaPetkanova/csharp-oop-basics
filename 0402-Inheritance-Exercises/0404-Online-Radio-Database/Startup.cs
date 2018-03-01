@@ -1,47 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 class Startup
 {
     static void Main()
     {
-        // 75/100 -> Test #4 (Incorrect answer), Test #6 (Incorrect answer) 
-
         var playlist = new List<Song>();
-        var plalistSecondsLength = 0;
 
         int songsCount = int.Parse(Console.ReadLine());
         for (int i = 0; i < songsCount; i++)
         {
+            var songsArgs = Console.ReadLine().Split(';');
             try
             {
-                var songsArgs = Console.ReadLine().Split(';');
                 var artistName = songsArgs[0];
                 var songName = songsArgs[1];
-
                 var songLength = songsArgs[2].Split(':');
-                int minutes = int.Parse(songLength[0]);
-                int seconds = int.Parse(songLength[1]);
-
-                var song = new Song(artistName, songName, minutes, seconds);
-                playlist.Add(song);
-                Console.WriteLine("Song added.");
-
-                plalistSecondsLength += seconds + minutes * 60;
+                int minutes;
+                int seconds;
+                if (int.TryParse(songLength[0], out minutes) && int.TryParse(songLength[1], out seconds))
+                {
+                    playlist.Add(new Song(artistName, songName, minutes, seconds));
+                    Console.WriteLine("Song added.");
+                }
+                else
+                {
+                    throw new InvalidSongLengthException();
+                }
             }
             catch (Exception ex)
             {
-                if (ex is ArgumentException)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                else if (ex is FormatException || ex is IndexOutOfRangeException)
-                {
-                    Console.WriteLine("Invalid song.");
-                }
+                Console.WriteLine(ex.Message);
             }
         }
-        TimeSpan length = TimeSpan.FromSeconds(plalistSecondsLength);
+
+        var totalDurationSeconds = playlist.Sum(s => s.Minutes * 60 + s.Seconds);
+        TimeSpan length = TimeSpan.FromSeconds(totalDurationSeconds);
 
         Console.WriteLine($"Songs added: {playlist.Count}");
         Console.WriteLine($"Playlist length: {length.Hours}h {length.Minutes}m {length.Seconds}s");

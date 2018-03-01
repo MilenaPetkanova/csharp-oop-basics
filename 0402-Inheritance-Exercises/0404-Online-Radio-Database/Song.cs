@@ -1,49 +1,74 @@
-﻿using System;
-
-public class Song
+﻿public class Song
 {
-    private const string InvalidSongException = "Invalid song.";
-    private const string InvalidArtistNameException = "Artist name should be between 3 and 20 symbols.";
-    private const string InvalidSongNameException = "Song name should be between 3 and 30 symbols.";
-    private const string InvalidSongLengthException = "Invalid song length.";
-    private const string InvalidSongMinutesException = "Song minutes should be between 0 and 14.";
-    private const string InvalidSongSecondsException = "Song seconds should be between 0 and 59.";
+    private const int MinNameLength = 3;
+    private const int MaxNameLength = 30;
 
-    public string ArtistName { get; private set; }
-    public string SongName { get; private set; }
-    public int Minutes { get; private set; }
-    public int Seconds { get; private set; }
+    private string artistName;
+    private string songName;
+    private int minutes;
+    private int seconds;
 
-    public Song(string artist, string song, int minutes, int seconds)
+    public Song(string artistName, string songName, int minutes, int seconds)
     {
-        this.ArtistName = artist;
-        this.SongName = song;
+        this.ArtistName = artistName;
+        this.SongName = songName;
         this.Minutes = minutes;
         this.Seconds = seconds;
-        ValidateSong();
     }
 
-    private void ValidateSong()
+    public string ArtistName
     {
-        if (ArtistName.Length < 3 || ArtistName.Length > 20)
+        get => this.artistName;
+        private set
         {
-            throw new ArgumentException(InvalidArtistNameException);
-        }
-        else if (SongName.Length < 3 || SongName.Length > 30)
-        {
-            throw new ArgumentException(InvalidSongNameException);
-        }
-        else if (Minutes > 14 && Seconds >= 0 && Seconds <= 59)
-        {
-            throw new ArgumentException(InvalidSongLengthException);
-        }
-        else if (Minutes < 0 || Minutes > 14)
-        {
-            throw new ArgumentException(InvalidSongMinutesException);
-        }
-        else if (Seconds < 0 || Seconds > 59)
-        {
-            throw new ArgumentException(InvalidSongSecondsException);
+            if (value.Length < 3 || value.Length > 20)
+            {
+                throw new InvalidArtistNameException();
+            }
+            artistName = value;
         }
     }
+
+    public string SongName
+    {
+        get => this.songName;
+        private set
+        {
+            if (value.Length < 3 || value.Length > 30)
+            {
+                throw new InvalidSongNameException();
+            }
+
+            this.songName = value;
+        }
+    }
+
+    public int Minutes
+    {
+        get => this.minutes;
+        private set
+        {
+            if (value < 0 || value > 14)
+            {
+                throw new InvalidSongMinutesException();
+            }
+
+            this.minutes = value;
+        }
+    }
+
+    public int Seconds
+    {
+        get => this.seconds;
+        private set
+        {
+            if (value < 0 || value > 59)
+            {
+                throw new InvalidSongSecondsException();
+            }
+
+            this.seconds = value;
+        }
+    }
+
 }
