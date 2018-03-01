@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0501-Define-an-Interface-IPerson", "0501-Define-an-Interface-IPerson\0501-Define-an-Interface-IPerson.csproj", "{7EFCFF29-5E64-4392-9D71-3976C39E507F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7EFCFF29-5E64-4392-9D71-3976C39E507F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EFCFF29-5E64-4392-9D71-3976C39E507F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EFCFF29-5E64-4392-9D71-3976C39E507F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EFCFF29-5E64-4392-9D71-3976C39E507F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E10D9B1E-94A7-42DF-B63B-37DB7D014740}
+	EndGlobalSection
+EndGlobal
