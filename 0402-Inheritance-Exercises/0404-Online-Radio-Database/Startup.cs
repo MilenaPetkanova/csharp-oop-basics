@@ -18,6 +18,7 @@ class Startup
                 var songsArgs = Console.ReadLine().Split(';');
                 var artistName = songsArgs[0];
                 var songName = songsArgs[1];
+
                 var songLength = songsArgs[2].Split(':');
                 int minutes = int.Parse(songLength[0]);
                 int seconds = int.Parse(songLength[1]);
