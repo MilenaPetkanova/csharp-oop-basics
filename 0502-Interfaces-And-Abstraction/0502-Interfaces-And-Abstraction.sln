@@ -3,13 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0501-Define-an-Interface-IPerson", "0501-Define-an-Interface-IPerson\0501-Define-an-Interface-IPerson.csproj", "{7EFCFF29-5E64-4392-9D71-3976C39E507F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "0501-Define-an-Interface-IPerson", "0501-Define-an-Interface-IPerson\0501-Define-an-Interface-IPerson.csproj", "{7EFCFF29-5E64-4392-9D71-3976C39E507F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0502-Multiple-Implementation", "0502-Multiple-Implementation\0502-Multiple-Implementation.csproj", "{38736244-B5B6-432A-91E5-458CC281ECAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "0502-Multiple-Implementation", "0502-Multiple-Implementation\0502-Multiple-Implementation.csproj", "{38736244-B5B6-432A-91E5-458CC281ECAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0503-Ferrari", "0503-Ferrari\0503-Ferrari.csproj", "{016B80FE-2168-4FDE-98AA-D7133A8221D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "0503-Ferrari", "0503-Ferrari\0503-Ferrari.csproj", "{016B80FE-2168-4FDE-98AA-D7133A8221D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0504-Telephony", "0504-Telephony\0504-Telephony.csproj", "{B12DBA67-4AD8-4402-ADC4-D74BF8358D7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "0504-Telephony", "0504-Telephony\0504-Telephony.csproj", "{B12DBA67-4AD8-4402-ADC4-D74BF8358D7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0505-Border-Control", "0505-Border-Control\0505-Border-Control.csproj", "{DBFA1C01-ED62-4D10-BB19-82A64EA519F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0506-Birthday-Celebrations", "0506-Birthday-Celebrations\0506-Birthday-Celebrations.csproj", "{D0FF22D5-5AE2-46D8-A600-A7CDF4E1EDD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{B12DBA67-4AD8-4402-ADC4-D74BF8358D7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B12DBA67-4AD8-4402-ADC4-D74BF8358D7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B12DBA67-4AD8-4402-ADC4-D74BF8358D7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBFA1C01-ED62-4D10-BB19-82A64EA519F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBFA1C01-ED62-4D10-BB19-82A64EA519F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBFA1C01-ED62-4D10-BB19-82A64EA519F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBFA1C01-ED62-4D10-BB19-82A64EA519F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0FF22D5-5AE2-46D8-A600-A7CDF4E1EDD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0FF22D5-5AE2-46D8-A600-A7CDF4E1EDD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0FF22D5-5AE2-46D8-A600-A7CDF4E1EDD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0FF22D5-5AE2-46D8-A600-A7CDF4E1EDD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
