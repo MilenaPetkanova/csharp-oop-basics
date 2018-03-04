@@ -3,13 +3,19 @@ using System.Text;
 
 public class LeutenantGeneral : Private, ILeutenantGeneral
 {
+    private List<Private> privates;
+
     public LeutenantGeneral(string id, string firstName, string lastName, decimal salary, List<Private> privates)
         : base(id, firstName, lastName, salary)
     {
         this.Privates = privates;
     }
 
-    public List<Private> Privates { get; private set; }
+    public List<Private> Privates
+    {
+        get => this.privates;
+        private set => this.privates = value;
+    }
 
     public override string ToString()
     {
