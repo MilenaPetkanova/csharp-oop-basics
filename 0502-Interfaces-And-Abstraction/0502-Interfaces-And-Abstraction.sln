@@ -11,13 +11,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "0503-Ferrari", "0503-Ferrar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "0504-Telephony", "0504-Telephony\0504-Telephony.csproj", "{B12DBA67-4AD8-4402-ADC4-D74BF8358D7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0505-Border-Control", "0505-Border-Control\0505-Border-Control.csproj", "{DBFA1C01-ED62-4D10-BB19-82A64EA519F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "0505-Border-Control", "0505-Border-Control\0505-Border-Control.csproj", "{DBFA1C01-ED62-4D10-BB19-82A64EA519F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0506-Birthday-Celebrations", "0506-Birthday-Celebrations\0506-Birthday-Celebrations.csproj", "{D0FF22D5-5AE2-46D8-A600-A7CDF4E1EDD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "0506-Birthday-Celebrations", "0506-Birthday-Celebrations\0506-Birthday-Celebrations.csproj", "{D0FF22D5-5AE2-46D8-A600-A7CDF4E1EDD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0507-Food-Shrtage", "0507-Food-Shrtage\0507-Food-Shrtage.csproj", "{58591730-F233-4AFE-B381-58D9C2DE675E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "0507-Food-Shrtage", "0507-Food-Shrtage\0507-Food-Shrtage.csproj", "{58591730-F233-4AFE-B381-58D9C2DE675E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0508-Military-Elite", "0508-Military-Elite\0508-Military-Elite.csproj", "{7A4949A8-0BD3-402D-B398-A8B9910D14E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "0508-Military-Elite", "0508-Military-Elite\0508-Military-Elite.csproj", "{7A4949A8-0BD3-402D-B398-A8B9910D14E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0509-Collection-Hierarchy", "0509-Collection-Hierarchy\0509-Collection-Hierarchy.csproj", "{DD6DAADA-6720-43D8-9CFB-3DBCED151579}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0510-Explicit-Interfaces", "0510-Explicit-Interfaces\0510-Explicit-Interfaces.csproj", "{C1000B11-C04E-4C76-8657-22C9FE7A4FF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,14 @@ Global
 		{7A4949A8-0BD3-402D-B398-A8B9910D14E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A4949A8-0BD3-402D-B398-A8B9910D14E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A4949A8-0BD3-402D-B398-A8B9910D14E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD6DAADA-6720-43D8-9CFB-3DBCED151579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD6DAADA-6720-43D8-9CFB-3DBCED151579}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD6DAADA-6720-43D8-9CFB-3DBCED151579}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD6DAADA-6720-43D8-9CFB-3DBCED151579}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1000B11-C04E-4C76-8657-22C9FE7A4FF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1000B11-C04E-4C76-8657-22C9FE7A4FF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1000B11-C04E-4C76-8657-22C9FE7A4FF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1000B11-C04E-4C76-8657-22C9FE7A4FF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
