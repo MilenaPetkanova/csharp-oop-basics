@@ -115,10 +115,10 @@ namespace Forum.Data
                 var id = int.Parse(args[0]);
                 var username = args[1];
                 var password = args[2];
-                var postIds = args[3].Split(',', StringSplitOptions.RemoveEmptyEntries)
-                    .Select(int.Parse)
-                    .ToArray();
-                User user = new User(id, username, password, postIds);
+                //var postIds = args[3].Split(',', StringSplitOptions.None)
+                //    .Select(int.Parse)
+                //    .ToArray();
+                User user = new User(id, username, password, new List<int>());
                 users.Add(user);
             }
 

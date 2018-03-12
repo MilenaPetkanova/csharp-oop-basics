@@ -9,7 +9,7 @@ namespace Forum.Models
             this.Id = id;
             this.Username = username;
             this.Password = password;
-            this.PostIds = postsIds;
+            this.PostIds = new List<int>(postsIds);
         }
 
         public int Id { get; set; }

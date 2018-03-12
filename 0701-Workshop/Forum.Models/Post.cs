@@ -11,7 +11,7 @@ namespace Forum.Models
             this.Content = content;
             this.CategoryId = categoryId;
             this.AuthorId = authorId;
-            this.ReplyIds = replyIds;
+            this.ReplyIds = new List<int>(replyIds);
         }
 
         public int Id { get; set; }

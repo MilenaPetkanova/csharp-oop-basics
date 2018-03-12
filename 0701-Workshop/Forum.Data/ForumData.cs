@@ -13,6 +13,7 @@ namespace Forum.Data
             this.Replies = DataMapper.LoadReplies();
         }
 
+        public static bool Any { get; set; }
         public List<Category> Categories { get; set; }
 
         public List<User> Users { get; set; }

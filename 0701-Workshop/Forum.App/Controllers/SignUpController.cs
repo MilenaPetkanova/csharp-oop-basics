@@ -2,33 +2,95 @@
 {
 	using Forum.App;
 	using Forum.App.Controllers.Contracts;
-	using Forum.App.UserInterface.Contracts;
+    using Forum.App.Services;
+    using Forum.App.UserInterface;
+    using Forum.App.UserInterface.Contracts;
 
 	public class SignUpController : IController, IReadUserInfoController
 	{
 		private const string DETAILS_ERROR = "Invalid Username or Password!";
 		private const string USERNAME_TAKEN_ERROR = "Username already in use!";
 
-        public string Username => throw new System.NotImplementedException();
+        public SignUpController()
+        {
+            this.ResetSignUp();
+        }
+
+        public string Username { get; private set; }
+
+        public string Password { get; private set; }
+
+        public string ErrorMessage { get; private set; }
+
+        public enum Command
+        {
+            ReadUsername, ReadPassword, SignUp, Back
+        }
+
+        public enum SignUpStatus
+        {
+            Success, DetailsError, UsernameTakenError
+        }
+
+        private void ResetSignUp()
+        {
+            this.ErrorMessage = string.Empty;
+            this.Username = string.Empty;
+            this.Password = string.Empty;
+        }
 
         public MenuState ExecuteCommand(int index)
         {
-            throw new System.NotImplementedException();
+            switch ((Command)index)
+            {
+                case Command.ReadUsername:
+                    this.ReadUsername();
+                    return MenuState.Signup;
+
+                case Command.ReadPassword:
+                    this.ReadPassword();
+                    return MenuState.Signup;
+
+                case Command.SignUp:
+                    SignUpStatus signUp = UserService.TrySignUpUser(this.Username, this.Password);
+                    switch (signUp)
+                    {
+                        case SignUpStatus.Success:
+                            return MenuState.SuccessfulLogIn;
+
+                        case SignUpStatus.DetailsError:
+                            this.ErrorMessage = DETAILS_ERROR;
+                            return MenuState.Error;
+
+                        case SignUpStatus.UsernameTakenError:
+                            this.ErrorMessage = USERNAME_TAKEN_ERROR;
+                            return MenuState.Error;
+                    }
+                    break;
+
+                case Command.Back:
+                    this.ResetSignUp();
+                    return MenuState.Back;
+            }
+
+            throw new InvalidCommandException();
         }
 
         public IView GetView(string userName)
         {
-            throw new System.NotImplementedException();
+            return new SignUpView(this.ErrorMessage);
         }
 
         public void ReadPassword()
         {
-            throw new System.NotImplementedException();
+            this.Password = ForumViewEngine.ReadRow();
+            ForumViewEngine.HideCursor();
         }
 
         public void ReadUsername()
         {
-            throw new System.NotImplementedException();
+            this.Username = ForumViewEngine.ReadRow();
+            ForumViewEngine.HideCursor();
         }
     }
 }
