@@ -21,6 +21,7 @@ namespace Forum.Data
         public List<Post> Posts { get; set; }
 
         public List<Reply> Replies { get; set; }
+        public object Find { get; set; }
 
         public void SaveChanges()
         {

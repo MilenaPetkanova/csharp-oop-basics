@@ -71,12 +71,17 @@ namespace Forum.Data
 
             foreach (var line in dataLines)
             {
-                var args = line.Split(';', StringSplitOptions.RemoveEmptyEntries);
+                var args = line.Split(';');
                 var id = int.Parse(args[0]);
                 var name = args[1];
-                var postIds = args[2].Split(',', StringSplitOptions.RemoveEmptyEntries)
-                    .Select(int.Parse)
-                    .ToArray();
+
+                var postIds = new List<int>();
+                if (args[2].Length != 0)
+                {
+                    postIds = args[2].Split(',')
+                        .Select(int.Parse)
+                        .ToList();
+                }
                 Category category = new Category(id, name, postIds);
                 categories.Add(category);
             }
@@ -111,14 +116,20 @@ namespace Forum.Data
 
             foreach (var line in dataLines)
             {
-                var args = line.Split(';', StringSplitOptions.RemoveEmptyEntries);
+                var args = line.Split(';');
                 var id = int.Parse(args[0]);
                 var username = args[1];
                 var password = args[2];
-                //var postIds = args[3].Split(',', StringSplitOptions.None)
-                //    .Select(int.Parse)
-                //    .ToArray();
-                User user = new User(id, username, password, new List<int>());
+
+                var postIds = new List<int>();
+                if (args[3].Length != 0)
+                {
+                    postIds = args[3].Split(',')
+                        .Select(int.Parse)
+                        .ToList();
+                }
+
+                User user = new User(id, username, password, postIds);
                 users.Add(user);
             }
 
@@ -153,15 +164,20 @@ namespace Forum.Data
 
             foreach (var line in dataLines)
             {
-                var args = line.Split(';', StringSplitOptions.RemoveEmptyEntries);
+                var args = line.Split(';');
                 var id = int.Parse(args[0]);
                 var title = args[1];
                 var content = args[2];
                 var categoryId = int.Parse(args[3]);
-                var authorId = int.Parse(args[4]);
-                var replyIds = args[5].Split(',', StringSplitOptions.RemoveEmptyEntries)
-                    .Select(int.Parse)
-                    .ToArray();
+                var authorId = 1;
+                var replyIds = new List<int>();
+                if (args.Length > 4)
+                {
+                    authorId = int.Parse(args[4]);
+                    replyIds = args[5].Split(',')
+                        .Select(int.Parse)
+                        .ToList();
+                }
                 Post post = new Post(id, title, content, categoryId, authorId, replyIds);
                 posts.Add(post);
             }
@@ -199,7 +215,7 @@ namespace Forum.Data
 
             foreach (var line in dataLines)
             {
-                var args = line.Split(';', StringSplitOptions.RemoveEmptyEntries);
+                var args = line.Split(';');
                 var id = int.Parse(args[0]);
                 var content = args[1];
                 var authorId = int.Parse(args[2]);
