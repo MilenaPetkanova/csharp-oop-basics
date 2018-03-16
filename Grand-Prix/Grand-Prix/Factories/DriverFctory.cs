@@ -19,7 +19,7 @@ public static class DriverFactory
 
         switch (type)
         {
-            case "Agressive":
+            case "Aggressive":
                 return new AggressiveDriver(name, car);
             case "Endurance":
                 return new EnduranceDriver(name, car);

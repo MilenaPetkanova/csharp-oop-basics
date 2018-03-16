@@ -19,7 +19,7 @@ public class UltrasoftTyre : Tyre
         {
             if (value < 30)
             {
-                throw new ArgumentException(ErrorMessages.BlownTyre);
+                throw new ArgumentException(OutputMessages.BlownTyre);
             }
             base.Degradation = value;
         }
@@ -27,6 +27,6 @@ public class UltrasoftTyre : Tyre
 
     public override void ReduceDegradation()
     {
-        base.Degradation -= base.Hardness + this.Grip;
+        base.Degradation -= this.Grip + base.Hardness;
     }
 }

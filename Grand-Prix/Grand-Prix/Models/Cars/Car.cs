@@ -28,12 +28,29 @@ public class Car
             }
             else if (value < 0)
             {
-                throw new ArgumentException(ErrorMessages.OutOfFuel);
+                throw new ArgumentException(OutputMessages.OutOfFuel);
             }
             else
             {
                 this.fuelAmount = value;
             }
         }
+    }
+
+    internal void ChangeTyres(Tyre tyre)
+    {
+        this.Tyre = tyre;
+    }
+
+    internal void Refuel(double fuelAmount)
+    {
+        this.FuelAmount += fuelAmount;
+    }
+
+    internal void CompleteLap(int trackLength, double fuelConsumptionPerKm)
+    {
+        this.FuelAmount -= trackLength * fuelConsumptionPerKm;
+
+        this.Tyre.ReduceDegradation();
     }
 }

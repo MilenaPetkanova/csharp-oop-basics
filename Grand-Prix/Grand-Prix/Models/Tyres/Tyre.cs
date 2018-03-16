@@ -21,7 +21,7 @@ public abstract class Tyre
         {
             if (value < 0)
             {
-                throw new ArgumentException(ErrorMessages.BlownTyre);
+                throw new ArgumentException(OutputMessages.BlownTyre);
             }
             this.degradation = value;
         }
