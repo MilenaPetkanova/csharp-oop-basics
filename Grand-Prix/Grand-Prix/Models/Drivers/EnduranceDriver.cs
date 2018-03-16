@@ -1,8 +1,7 @@
 ﻿public class EnduranceDriver : Driver
 {
     public EnduranceDriver(string name, Car car) 
-        : base(name, car)
+        : base(name, car, 1.3)
     {
-        base.FuelConsumptionPerKm = 1.5;
     }
 }
