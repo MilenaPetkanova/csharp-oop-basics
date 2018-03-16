@@ -1,20 +1,13 @@
 ﻿using System;
 
-public class Provider : IProvider
+public abstract class Provider : Unit
 {
-    private string id;
     private double energyOutput;
 
-    public Provider(string id, double energy)
+    public Provider(string id, double energy) 
+        : base(id)
     {
-        this.Id = id;
         this.EnergyOutput = energy;
-    }
-
-    public string Id
-    {
-        get => this.id;
-        set => this.id = value;
     }
 
     public double EnergyOutput
@@ -22,7 +15,7 @@ public class Provider : IProvider
         get => this.energyOutput;
         protected set
         {
-            if (value <= 0 || value >= 10000)
+            if (value < 0 || value >= 10000)
             {
                 throw new ArgumentException($"Provider is not registered, because of it's {nameof(this.EnergyOutput)}");
             }
@@ -30,8 +23,10 @@ public class Provider : IProvider
         }
     }
 
-    public double ProduceEnergy()
+    public override string ToString()
     {
-        return this.energyOutput;
+        var output = $"{this.Type} Provider - {base.Id}" + Environment.NewLine +
+                    $"Energy Output: {this.energyOutput}";
+        return output;
     }
 }

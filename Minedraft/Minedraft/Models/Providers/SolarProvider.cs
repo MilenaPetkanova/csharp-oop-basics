@@ -7,6 +7,8 @@ public class SolarProvider : Provider
     {
     }
 
+    public override string Type => "Solar";
+
     public override string ToString()
     {
         var output = new StringBuilder();

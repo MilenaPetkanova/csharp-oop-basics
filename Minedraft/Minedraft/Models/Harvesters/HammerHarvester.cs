@@ -9,6 +9,8 @@ public class HammerHarvester : Harvester
         base.EnergyRequirement *= 2;
     }
 
+    public override string Type => "Hammer";
+
     public override string ToString()
     {
         var output = new StringBuilder();

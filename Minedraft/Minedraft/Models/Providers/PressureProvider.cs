@@ -8,6 +8,8 @@ public class PressureProvider : Provider
         base.EnergyOutput *= 1.5;
     }
 
+    public override string Type => "Pressure";
+
     public override string ToString()
     {
         var output = new StringBuilder();

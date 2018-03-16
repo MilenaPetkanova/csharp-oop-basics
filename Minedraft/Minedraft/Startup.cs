@@ -14,37 +14,29 @@ class Startup
             var command = inputLine[0];
             var parameters = inputLine.Skip(1).ToList();
 
-            try
+            switch (command)
             {
-                switch (command)
-                {
-                    case "RegisterHarvester":
-                        Console.WriteLine(draft.RegisterHarvester(parameters));
-                        break;
-                    case "RegisterProvider":
-                        Console.WriteLine(draft.RegisterProvider(parameters));
-                        break;
-                    case "Day":
-                        Console.WriteLine(draft.Day());
-                        break;
-                    case "Mode":
-                        Console.WriteLine(draft.Mode(parameters));
-                        break;
-                    case "Check":
-                        Console.WriteLine(draft.Check(parameters));
-                        break;
-                    case "Shutdown":
-                        Console.WriteLine(draft.ShutDown());
-                        turnOn = false;
-                        return;
-                    default:
-                        break;
-                }
-            }
-            catch (ArgumentException ex)
-            {
-                Console.WriteLine(ex.Message);
+                case "RegisterHarvester":
+                    Console.WriteLine(draft.RegisterHarvester(parameters));
+                    break;
+                case "RegisterProvider":
+                    Console.WriteLine(draft.RegisterProvider(parameters));
+                    break;
+                case "Day":
+                    Console.WriteLine(draft.Day());
+                    break;
+                case "Mode":
+                    Console.WriteLine(draft.Mode(parameters));
+                    break;
+                case "Check":
+                    Console.WriteLine(draft.Check(parameters));
+                    break;
+                case "Shutdown":
+                    Console.WriteLine(draft.ShutDown());
+                    turnOn = false;
+                    return;
             }
         }
+
     }
 }

@@ -5,11 +5,13 @@ public class SonicHarvester : Harvester
     public SonicHarvester(string id, double oreOutput, double energyRequirement, int sonicFactor)
         : base(id, oreOutput, energyRequirement)
     {
-        this.SonicFactor = sonicFactor;
-        base.EnergyRequirement /= this.SonicFactor;
+        //this.SonicFactor = sonicFactor;
+        base.EnergyRequirement /= sonicFactor;
     }
 
-    public int SonicFactor { get; private set; }
+    public override string Type => "Sonic";
+
+    //public int SonicFactor { get; private set; }
 
     public override string ToString()
     {

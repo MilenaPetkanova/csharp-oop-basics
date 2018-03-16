@@ -1,22 +1,15 @@
 ﻿using System;
 
-public class Harvester : IHarvester
+public abstract class Harvester : Unit
 {
-    private string id;
     private double oreOutput;
     private double energyRequirement;
 
     public Harvester(string id, double oreOutput, double energyRequirement)
+        : base (id)
     {
-        this.Id = id;
         this.OreOutput = oreOutput;
         this.EnergyRequirement = energyRequirement;
-    }
-
-    public string Id
-    {
-        get => this.id;
-        set => this.id = value;
     }
 
     public double OreOutput
@@ -24,7 +17,7 @@ public class Harvester : IHarvester
         get => this.oreOutput;
         protected set
         {
-            if (value <= 0)
+            if (value < 0)
             {
                 throw new ArgumentException($"Harvester is not registered, because of it's {nameof(this.OreOutput)}");
             }
@@ -37,7 +30,7 @@ public class Harvester : IHarvester
         get => this.energyRequirement;
         protected set
         {
-            if (value <= 0 || value > 20000)
+            if (value < 0 || value > 20000)
             {
                 throw new ArgumentException($"Harvester is not registered, because of it's {nameof(this.EnergyRequirement)}");
             }
@@ -45,14 +38,11 @@ public class Harvester : IHarvester
         }
     }
 
-    public void ConsumeEnergy(double consumation)
+    public override string ToString()
     {
-    }
-
-    public double MinePlumbusOre(double coef)
-    {
-        this.oreOutput *= coef;
-
-        return this.oreOutput;
+        var output = $"{this.Type} Harvester - {base.Id}" + Environment.NewLine +
+                    $"Ore Output: {this.oreOutput}" + Environment.NewLine +
+                    $"Energy Requirement: {this.energyRequirement}";
+        return output;
     }
 }
