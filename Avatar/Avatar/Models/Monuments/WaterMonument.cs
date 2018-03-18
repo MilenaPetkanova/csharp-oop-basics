@@ -6,13 +6,17 @@
         : base(name)
     {
         this.WaterAffinity = waterAffinity;
-        base.Affinity = waterAffinity;
     }
 
     public int WaterAffinity
     {
         get { return waterAffinity; }
         set { waterAffinity = value; }
+    }
+
+    public override int GetAffinity()
+    {
+        return this.waterAffinity;
     }
 
     public override string ToString()

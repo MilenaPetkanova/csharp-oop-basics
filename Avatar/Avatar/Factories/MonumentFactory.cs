@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 public class MonumentFactory
 {
-    private Types types;
-
     public Monument CreateMonument(List<string> args)
     {
         var type = args[0];

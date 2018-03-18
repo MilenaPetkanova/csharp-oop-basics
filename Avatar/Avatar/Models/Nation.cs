@@ -43,7 +43,7 @@ public class Nation
 
     public void CalculateTotalPower()
     {
-        int monumentsTotalPower = this.allMonuments.Sum(m => m.Affinity);
+        int monumentsTotalPower = this.allMonuments.Sum(m => m.GetAffinity());
 
         this.TotalPower += this.allBenders.Sum(b => b.Power);
         this.TotalPower += (this.TotalPower / 100) * monumentsTotalPower;

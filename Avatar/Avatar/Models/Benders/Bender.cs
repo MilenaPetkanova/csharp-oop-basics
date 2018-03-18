@@ -1,10 +1,5 @@
-﻿using System;
-using System.Linq;
-using System.Text.RegularExpressions;
-
-public abstract class Bender
+﻿public abstract class Bender
 {
-    private const string NAME_VALIDATION = @"^[a-zA-Z0-9]*$";
     private string name;
     private int power;
 
@@ -23,14 +18,7 @@ public abstract class Bender
     public string Name
     {
         get { return name; }
-        protected set
-        {
-            if (!Regex.IsMatch(value, NAME_VALIDATION))
-            {
-                throw new ArgumentException(ErrorMessages.InvalidName);
-            }
-            name = value;
-        }
+        protected set { name = value; }
     }
 
     public override string ToString()

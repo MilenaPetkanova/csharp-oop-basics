@@ -6,13 +6,17 @@
         : base(name)
     {
         this.AirAffinity = airAffinity;
-        base.Affinity = airAffinity;
     }
 
     public int AirAffinity
     {
         get { return airAffinity; }
         set { airAffinity = value; }
+    }
+
+    public override int GetAffinity()
+    {
+        return this.airAffinity;
     }
 
     public override string ToString()
