@@ -11,7 +11,11 @@ internal class Cleric : Character, IHealable
 
     public void Heal(Character character)
     {
-        if (base.Faction != character.Faction)
+        if (!this.IsAlive || !character.IsAlive)
+        {
+            throw new InvalidOperationException("Must be alive to perform this action!");
+        }
+        else if (base.Faction != character.Faction)
         {
             throw new InvalidOperationException("Cannot heal enemy character!");
         }

@@ -51,11 +51,11 @@ public class DungeonMaster
 
         var lastItem = pool.Last();
 
-        character.Bag.AddItem(lastItem);
+        character.ReceiveItem(lastItem);
 
         pool.Remove(lastItem);
 
-        return $"{character.Name} picked up {lastItem.GetType()}!";
+        return $"{character.Name} picked up {lastItem.GetType().Name}!";
     }
 
     public string UseItem(string[] args)
@@ -65,7 +65,7 @@ public class DungeonMaster
 
         character.UseItem(item);
 
-        return $"{character.Name} used {item.GetType()}.";
+        return $"{character.Name} used {item.GetType().Name}.";
     }
 
     public string UseItemOn(string[] args)
@@ -76,7 +76,7 @@ public class DungeonMaster
 
         giver.UseItemOn(item, receiver);
 
-        return $"{giver.Name} used {item.GetType()} on {receiver.Name}.";
+        return $"{giver.Name} used {item.GetType().Name} on {receiver.Name}.";
     }
 
     public string GiveCharacterItem(string[] args)
@@ -92,11 +92,12 @@ public class DungeonMaster
 
     public string GetStats()
     {
-        var orderedCharacters = this.party.OrderByDescending(p => p.IsAlive)
+        var orderedCharacters = this.party
+            .OrderByDescending(p => p.IsAlive)
             .ThenByDescending(p => p.Health);
 
-        return "Final stats:" + Environment.NewLine
-            + string.Join(Environment.NewLine, orderedCharacters);
+        var output = string.Join(Environment.NewLine, orderedCharacters);
+        return output;
     }
 
     public string Attack(string[] args)
@@ -147,7 +148,7 @@ public class DungeonMaster
 
         if (aliveCharacters.Count <= 1)
         {
-            lastSurviviorRounds++;
+            this.lastSurviviorRounds++;
         }
 
         foreach (var character in aliveCharacters)
@@ -162,14 +163,10 @@ public class DungeonMaster
 
     public bool IsGameOver()
     {
-        var aliveCharacters = party.Where(ch => ch.IsAlive).ToList();
+        var oneOrZeroSurvivorsLeft = this.party.Count(c => c.IsAlive) <= 1;
+        var lastSurviverSurvivedTooLong = this.lastSurviviorRounds > 1;
 
-        if (aliveCharacters.Count < 2 && this.lastSurviviorRounds > 1)
-        {
-            return true;
-        }
-
-        return false;
+        return oneOrZeroSurvivorsLeft && lastSurviverSurvivedTooLong;
     }
 
     private Character CheckIfCharacterExists(string characterName)

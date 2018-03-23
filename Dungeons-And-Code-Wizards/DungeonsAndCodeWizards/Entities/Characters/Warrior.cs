@@ -9,7 +9,11 @@ public class Warrior : Character, IAttackable
 
     public void Attack(Character character)
     {
-        if (this.Name == character.Name)
+        if (!this.IsAlive || !character.IsAlive)
+        {
+            throw new InvalidOperationException("Must be alive to perform this action!");
+        }
+        else if (this.Name == character.Name)
         {
             throw new InvalidOperationException("Cannot attack self!");
         }

@@ -14,7 +14,7 @@ public class Engine
 
     public void Run()
     {
-        while (isRunning)
+        while (this.isRunning)
         {
             var inputLine = Console.ReadLine();
 
@@ -48,6 +48,7 @@ public class Engine
             }
         }
 
+        Console.WriteLine("Final stats:");
         Console.WriteLine(this.dungeonMaster.GetStats());
     }
 
@@ -85,7 +86,6 @@ public class Engine
                 break;
             case "EndTurn":
                 output = this.dungeonMaster.EndTurn(args);
-                this.isRunning = !dungeonMaster.IsGameOver();
                 break;
             default:
                 throw new ArgumentException("Invalid command!");

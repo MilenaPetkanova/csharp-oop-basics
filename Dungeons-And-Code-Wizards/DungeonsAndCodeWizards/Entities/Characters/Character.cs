@@ -5,6 +5,9 @@ public abstract class Character
     private string name;
     private double health;
     private double armor;
+    private double baseArmor;
+    private double baseHealth;
+    private double abilityPoints;
 
     public Character(string name, double health, double armor, double abilityPoints, Bag bag, Faction faction)
     {
@@ -21,7 +24,6 @@ public abstract class Character
         this.Faction = faction;
 
         this.IsAlive = true;
-        this.RestHealMultiplier = 0.2;
     }
 
     public string Name
@@ -37,48 +39,65 @@ public abstract class Character
         }
     }
 
-    public double BaseHealth { get; }
+    public double BaseHealth
+    {
+        get
+        {
+            return this.baseHealth;
+        }
+        private set
+        {
+            this.baseHealth = value;
+        }
+    }
 
     public double Health
     {
-        get => this.health;
-        private set
+        get
         {
-            if (value <= 0)
-            {
-                this.health = 0;
-                this.IsAlive = false;
-            }
-            else if (value >= this.BaseHealth)
-            {
-                this.health = this.BaseHealth;
-            }
-            else
-            {
-                this.health = value;
-            }
+            return this.health;
+        }
+        set
+        {
+            this.health = Math.Min(value, this.BaseHealth);
         }
     }
 
-    public double BaseArmor { get; private set; }
+    public double BaseArmor
+    {
+        get
+        {
+            return this.baseArmor;
+        }
+        private set
+        {
+            this.baseArmor = value;
+        }
+    }
 
     public double Armor
     {
-        get => this.armor;
-        private set
+        get
         {
-            if (value >= this.BaseArmor)
-            {
-                this.armor = this.BaseArmor;
-            }
-            else
-            {
-                this.armor = value;
-            }
+            return this.armor;
+        }
+        set
+        {
+            this.armor = Math.Min(value, this.BaseArmor);
         }
     }
 
-    public double AbilityPoints { get; protected set; }
+    public double AbilityPoints
+    {
+        get
+        {
+            return abilityPoints;
+        }
+        private set
+        {
+            this.abilityPoints = value;
+        }
+    }
 
     public Bag Bag { get; }
 
@@ -86,7 +105,7 @@ public abstract class Character
 
     public bool IsAlive { get; private set; }
 
-    public virtual double RestHealMultiplier { get; protected set; }
+    public virtual double RestHealMultiplier => 0.2;
 
     public void GetHealthIncreasement(double points)
     {
@@ -105,17 +124,22 @@ public abstract class Character
 
     public void TakeDamage(double hitPoints)
     {
-        this.Armor -= hitPoints;
-        if (this.Armor < 0)
+        this.EnsureAlive();
+
+        var hitpointsLeftAfterArmorDamage = Math.Max(0, hitPoints - this.Armor);
+        this.Armor = Math.Max(0, this.Armor - hitPoints);
+        this.Health = Math.Max(0, this.Health - hitpointsLeftAfterArmorDamage);
+
+        if (this.Health == 0)
         {
-            hitPoints = Math.Abs(this.Armor);
-            this.Armor = 0;
-            this.Health -= hitPoints;
+            this.IsAlive = false;
         }
     }
 
     public void Rest()
     {
+        EnsureAlive();
+
         var increasement = this.BaseHealth * this.RestHealMultiplier;
         this.Health += increasement;
     }
@@ -138,6 +162,14 @@ public abstract class Character
     public void ReceiveItem(Item item)
     {
         this.Bag.AddItem(item);
+    }
+
+    protected void EnsureAlive()
+    {
+        if (!this.IsAlive)
+        {
+            throw new InvalidOperationException("Must be alive to perform this action!");
+        }
     }
 
     public override string ToString()
