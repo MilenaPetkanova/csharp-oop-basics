@@ -4,5 +4,5 @@ public interface ICenter
 {
     string Name { get; }
 
-    List<Animal> StoredAnimals { get; }
+    List<IAnimal> StoredAnimals { get; }
 }

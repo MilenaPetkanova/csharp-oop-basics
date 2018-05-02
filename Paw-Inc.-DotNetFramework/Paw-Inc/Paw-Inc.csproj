@@ -46,6 +46,7 @@
     <Compile Include="Controllers\PawIncMenager.cs" />
     <Compile Include="Interfaces\IAnimal.cs" />
     <Compile Include="Interfaces\ICenter.cs" />
+    <Compile Include="Interfaces\IPawIncMenager.cs" />
     <Compile Include="Models\Animals\Animal.cs" />
     <Compile Include="Models\Animals\Cat.cs" />
     <Compile Include="Models\Animals\Dog.cs" />

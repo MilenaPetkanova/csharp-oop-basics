@@ -8,13 +8,13 @@ public class AdoptionCenter : Center
     {
     }
 
-    public IEnumerable<Animal> SendCleansing()
+    public IList<IAnimal> SendCleansing()
     {
-        var uncleansedAnimals = base.StoredAnimals.Where(a => a.CleansingStatus == "UNCLEANSED");
+        var uncleansedAnimals = base.StoredAnimals.Where(a => a.CleansingStatus == "UNCLEANSED").ToList();
         return uncleansedAnimals;
     }
     
-    public List<Animal> AdoptCleansedAnimals()
+    public IList<IAnimal> AdoptCleansed()
     {
         var cleansedAnimals = base.StoredAnimals.Where(a => a.CleansingStatus == "CLEANSED").ToList();
 

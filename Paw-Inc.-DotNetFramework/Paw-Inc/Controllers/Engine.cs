@@ -43,6 +43,6 @@ public class Engine
             }
         }
 
-        pawIncMenager.PrintOutput();
+        pawIncMenager.Report();
     }
 }

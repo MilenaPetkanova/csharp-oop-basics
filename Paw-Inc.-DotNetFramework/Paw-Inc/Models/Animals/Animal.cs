@@ -11,5 +11,5 @@
 
     public int Age { get; private set; }
 
-    public string CleansingStatus { get; internal set; }
+    public string CleansingStatus { get; set; }
 }

@@ -2,22 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 
-public class PawIncMenager
+public class PawIncMenager : IPawIncMenager
 {
     public PawIncMenager()
     {
         this.CleansingCenters = new List<CleansingCenter>();
         this.AdoptionCenters = new List<AdoptionCenter>();
-        this.AdoptedAnimals = new List<Animal>();
+        this.AdoptedAnimals = new List<IAnimal>();
     }
 
-    private List<CleansingCenter> CleansingCenters { get; set; }
+    public List<CleansingCenter> CleansingCenters { get; private set; }
 
-    private List<AdoptionCenter> AdoptionCenters { get; set; }
+    public List<AdoptionCenter> AdoptionCenters { get; private set; }
 
-    private List<Animal> AdoptedAnimals { get; set; }
+    public List<IAnimal> AdoptedAnimals { get; private set; }
 
-    
     public void RegisterCleansingCenter(string name)
     {
         this.CleansingCenters.Add(new CleansingCenter(name));
@@ -65,18 +64,19 @@ public class PawIncMenager
     {
         var adoptionCenter = this.AdoptionCenters.First(c => c.Name == adoptionCenterName);
 
-        var adoptedAnimals = adoptionCenter.AdoptCleansedAnimals();
+        var adoptedAnimals = adoptionCenter.AdoptCleansed().ToList();
 
         this.AdoptedAnimals.AddRange(adoptedAnimals);
     }
 
-    public void PrintOutput()
+    public void Report()
     {
         Console.WriteLine("Paw Incorporative Regular Statistics");
         Console.WriteLine($"Adoption Centers: {this.AdoptionCenters.Count}");
         Console.WriteLine($"Cleansing Centers: {this.CleansingCenters.Count}");
 
-        var adoptedAnimalsNames = this.AdoptedAnimals.OrderBy(a => a.Name).Select(a => a.Name).ToList();
+        var adoptedAnimalsNames = this.AdoptedAnimals
+            .OrderBy(a => a.Name).Select(a => a.Name).ToList();
         if (adoptedAnimalsNames.Count == 0)
         {
             Console.WriteLine("Adopted Animals: None");
@@ -101,11 +101,11 @@ public class PawIncMenager
         Console.WriteLine($"Animals Awaiting Adoption: {amountOfAnimalsWaitingForAdoption}");
 
         int amountOfAnimalsWaitingForCleansing = CountAnimalsWaitingForCleansing();
-        Console.WriteLine($"Animals Awaiting Adoption: {amountOfAnimalsWaitingForCleansing}");
+        Console.WriteLine($"Animals Awaiting Cleansing: {amountOfAnimalsWaitingForCleansing}");
 
     }
 
-    public int CountAnimalsWaitingForCleansing()
+    private int CountAnimalsWaitingForCleansing()
     {
         var counter = 0;
         foreach (var center in this.CleansingCenters)
@@ -121,7 +121,7 @@ public class PawIncMenager
         return counter;
     }
 
-    public int CountAnimalsWaitingForAdoption()
+    private int CountAnimalsWaitingForAdoption()
     {
         var counter = 0;
         foreach (var center in this.AdoptionCenters)
@@ -137,7 +137,7 @@ public class PawIncMenager
         return counter;
     }
 
-    public List<string> GetAllCleansedAnimalsNames()
+    private List<string> GetAllCleansedAnimalsNames()
     {
         var allCleansedAnimalsNames = new List<string>();
 

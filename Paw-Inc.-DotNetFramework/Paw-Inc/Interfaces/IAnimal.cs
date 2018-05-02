@@ -4,5 +4,5 @@
 
     int Age { get; }
 
-    string CleansingStatus { get; }
+    string CleansingStatus { get; set; }
 }
